@@ -15,7 +15,7 @@ public class HITGvyActualizaAgentBooking extends AbstractEntityLifecycleIntercep
 		public void onUpdate(EEntityView inEntity, EFieldChangesView inOriginalFieldChanges, EFieldChanges inMoreFieldChanges) 
 		{
 			inMoreFieldChanges.setFieldChange(OrdersField.EQO_NOTES, 'Booking cambiado por CE: HITGvyActualizaAgentBooking01');
-
+			//cambio aqui test
 			return;
 			
 		}
