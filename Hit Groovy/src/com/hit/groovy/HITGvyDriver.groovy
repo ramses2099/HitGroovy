@@ -16,6 +16,12 @@ import com.navis.framework.portal.QueryUtils;
 import com.navis.framework.portal.query.DomainQuery;
 import com.navis.framework.portal.query.Predicate;
 
+/*
+*groovy for consulting and banned or ok truckingdriver
+*developing for ing. jose encarnacion
+*date 09/11/2017
+*/
+
 
 public class HITGvyDriver extends GroovyInjectionBase{
 	
@@ -90,8 +96,7 @@ public class HITGvyDriver extends GroovyInjectionBase{
 				return xmlResult;
 		
 	}
-	
-	
+	//	
 	private void changeState(String inCardId, String inLicNbr,String inStatus) throws BizViolation
 	{
 		
