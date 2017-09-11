@@ -25,22 +25,34 @@ public class HITGvyTruck extends GroovyInjectionBase {
 				
 		// Action declare
 		String Action = (String) inParams.get("Action");
+		String inBatNbr = (String) inParams.get("BATNumber");
+		String inLicNbr = (String) inParams.get("License");
+		String inStatus = (String) inParams.get("Status");
+
 		
 		// Find Truck
 		if(Action == "SEARCH") {
-
-			String inBatNbr = (String) inParams.get("BATNumber");
-			String inLicNbr = (String) inParams.get("License");
-
+					
 			if ((inBatNbr != "") || (inLicNbr != "")) {
 
 				return findTruck(inBatNbr, inLicNbr);
 
-			} else if (Action == "EXECUTE"){
+		    }
+			
+		} else if (Action == "EXECUTE"){
+				
+			changeState(inBatNbr,inLicNbr,inStatus);
+			
+			String xmlResult = "<truck>" +
+			"<parameters>" +
+			"<parameter name=\"BatNbr\" value=\"" + TrkBatNbr + "\"/>" +
+			"<parameter name=\"TrkLicenseNbr\" value=\"" + TrkLicenseNbr + "\"/>" +
+			"<parameter name=\"TrkStatus\" value=\"" + TrkStatus + "\"/>" +
+			"</parameters>" +
+			"</truck>";
+							
+			return xmlResult;
 
-				return "Do not empty field!";
-
-			}
 
 		}
 	
@@ -122,6 +134,26 @@ public class HITGvyTruck extends GroovyInjectionBase {
 
 	}
 
+	private void changeState(String inBatNbr, String inLicNbr,String inStatus) throws BizViolation 
+	{
+		
+		Truck TrkEntityId = null;
+		
+		if(inBatNbr != "") {
+			TrkEntityId = Truck.findTruckByBatNbr(inBatNbr);
+		} else {
+			TrkEntityId = Truck.findTruckByLicNbr(inLicNbr);
+		}
+		
+		if(inStatus == "OK") 
+		{
+			TrkEntityId.setTruckStatus(TruckStatusEnum.OK);
+		}else if(inStatus == "BANNED")
+		{
+			TrkEntityId.setTruckStatus(TruckStatusEnum.BANNED);
+		}
+		
+	}
 			
 	
 	
@@ -134,6 +166,10 @@ public class HITGvyTruck extends GroovyInjectionBase {
 	    <parameter id="Action" value="EXECUTE"/>	 
 	    <parameter id="BATNumber" value="R063"/>
 	    <parameter id="License" value="L217627"/>
+	    <parameter id="Status" value="BANNED"/>
+	    OR
+	    <parameter id="Status" value="OK"/>
+	    
 	  </parameters>
 	 </groovy>
 	 */
