@@ -17,6 +17,12 @@ import com.navis.framework.portal.query.DomainQuery;
 import com.navis.framework.portal.query.Predicate;
 
 
+/*
+*groovy for consulting and banned or ok truckingdriver
+*developing for ing. jose encarnacion
+*date 09/11/2017
+*/
+
 
 public class HITGvyTruck extends GroovyInjectionBase {
 	
