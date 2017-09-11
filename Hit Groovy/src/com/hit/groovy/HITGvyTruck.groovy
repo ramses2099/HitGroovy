@@ -45,9 +45,9 @@ public class HITGvyTruck extends GroovyInjectionBase {
 			
 			String xmlResult = "<truck>" +
 			"<parameters>" +
-			"<parameter name=\"BatNbr\" value=\"" + TrkBatNbr + "\"/>" +
-			"<parameter name=\"TrkLicenseNbr\" value=\"" + TrkLicenseNbr + "\"/>" +
-			"<parameter name=\"TrkStatus\" value=\"" + TrkStatus + "\"/>" +
+			"<parameter name=\"BatNbr\" value=\"" + inBatNbr + "\"/>" +
+			"<parameter name=\"TrkLicenseNbr\" value=\"" + inLicNbr + "\"/>" +
+			"<parameter name=\"TrkStatus\" value=\"" + inStatus + "\"/>" +
 			"</parameters>" +
 			"</truck>";
 							
@@ -60,12 +60,7 @@ public class HITGvyTruck extends GroovyInjectionBase {
 	}
 
 	
-	/**
-	 * @param inBatNbr
-	 * @param inById
-	 * @return
-	 * @throws BizViolation
-	 */
+
 	private String findTruck(String inBatNbr, String inLicNbr) throws BizViolation {
 
 		/*
@@ -168,8 +163,7 @@ public class HITGvyTruck extends GroovyInjectionBase {
 	    <parameter id="License" value="L217627"/>
 	    <parameter id="Status" value="BANNED"/>
 	    OR
-	    <parameter id="Status" value="OK"/>
-	    
+	    <parameter id="Status" value="OK"/>	    
 	  </parameters>
 	 </groovy>
 	 */
