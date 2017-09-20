@@ -135,8 +135,8 @@ public class HITGvyPermissionPCT extends GroovyInjectionBase {
 		Stub stub = (Stub) port;
 		// Specify the User ID and the Password
 		//stub._setProperty(Stub.USERNAME_PROPERTY, "admin");
-		stub._setProperty(Stub.USERNAME_PROPERTY, "dph.webapi");		
-		stub._setProperty(Stub.PASSWORD_PROPERTY, "NavisProduccion");
+		stub._setProperty(Stub.USERNAME_PROPERTY, "pct.webapi");		
+		stub._setProperty(Stub.PASSWORD_PROPERTY, "abcd.1234");
 		response = port.genericInvoke(scope, inQueryXML);
 		return response;
 	}
