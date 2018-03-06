@@ -89,9 +89,7 @@ public class InvoiceInterceptor extends AbstractEntityLifecycleInterceptor {
 				if(usuarioActual.getArgouserCompanyBizUnit() != null)
 				{
 					factura.setFieldValue(MetafieldIdFactory.valueOf("customFlexFields.invoiceCustomDFFTerminal"), usuarioActual.getArgouserCompanyBizUnit().getBzuName());
-
 				}
-
 			}
 
 
@@ -101,7 +99,7 @@ public class InvoiceInterceptor extends AbstractEntityLifecycleInterceptor {
 				if(userContext.getUserId().toString().equals(null) || userContext.getUserId().toString().equals("") )
 				{
 					throw new BizViolation(PropertyKeyFactory.valueOf("User Id is empty or null"),null,null,null,null);
-				}else if(userContext.getUserId().toString().equals("martha.lugo"))
+				}else if(userContext.getUserId().toString().equals("martha.lugo")  || userContext.getUserId().toString().toLowerCase().equals("martha.lugo") )
 				{
 					//nothing
 				}else if(userContext.getUserId().toString().equals("adonay.encarnacion")){
@@ -110,11 +108,8 @@ public class InvoiceInterceptor extends AbstractEntityLifecycleInterceptor {
 					if(factura.getInvoiceStatus() == InvoiceStatusEnum.FINAL){
 						//
 						if(inOriginalFieldChanges.hasFieldChange(MetafieldIdFactory.valueOf("invoiceFlexString07"))){
-
 							throw new BizViolation(PropertyKeyFactory.valueOf("No pude actualizar el Tipo Pago, si la factura esta en estatus FINAL."),null,null,null,null);
-
 						}
-
 					}
 				}
 
@@ -403,4 +398,3 @@ public class InvoiceInterceptor extends AbstractEntityLifecycleInterceptor {
 	}
 
 }
-
